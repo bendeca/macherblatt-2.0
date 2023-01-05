@@ -8,7 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "3.2.45"
+    "moment": "^2.29.4",
+    "qr-scanner": "^1.4.2",
+    "vue": "3.2.45",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -31,7 +34,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",
