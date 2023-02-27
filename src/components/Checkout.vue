@@ -108,7 +108,7 @@ export default {
       <div class="submit">
         <button
           @click="checkout"
-          class="button button-primary"
+          class="button button-secondary"
           :disabled="!shopSelected"
         >
           Weiter

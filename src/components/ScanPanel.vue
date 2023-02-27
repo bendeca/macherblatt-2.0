@@ -55,6 +55,7 @@ export default {
       } else if (this.isCheckout) {
         // set checkout time to now
         console.log("set checkout time to now");
+        this.$router.push("checkout");
       }
     },
     entryDoesNotExist(data, result) {
@@ -86,6 +87,12 @@ export default {
             this.showCheckinSuccess = true;
           });
       }
+    },
+    fakeResult(result) {
+      console.log(result);
+      this.setResult({
+        data: result
+      });
     },
     setResult(result) {
       // stop scanning for qr codes
@@ -130,6 +137,22 @@ export default {
   <div class="scan-panel">
     <div class="main">
       <div id="video-container" width="10%">
+        <div>
+          <button
+            v-show="disableButtons"
+            @click="reload"
+            class="cancel button-secondary"
+          >
+            Abbrechen
+          </button>
+          <button
+            v-show="disableButtons"
+            @click="fakeResult(1)"
+            class="cancel button-secondary"
+          >
+            fake scan
+          </button>
+        </div>
         <video id="qr-video" ref="video"></video>
       </div>
       <span id="cam-qr-result">{{ camQrResult }}</span>
@@ -140,7 +163,7 @@ export default {
         <div v-if="showCheckinSuccess">Checkin erfolgreich, viel Spass</div>
         <div v-if="showCheckinTwice">Bereits eingecheckt</div>
         <div v-if="showOnlyCheckout">noch nicht eingecheckt</div>
-        <button @click="reload" class="button button-primary button-ok">
+        <button @click="reload" class="button button-secondary button-ok">
           Ok
         </button>
       </div>
@@ -154,7 +177,6 @@ export default {
         >
           Check-In
         </button>
-        ich bin gerade gekommen
       </div>
       <div>
         <button
@@ -164,7 +186,6 @@ export default {
         >
           Check-Out
         </button>
-        ich bin dann mal weg
       </div>
     </div>
   </div>
@@ -191,11 +212,12 @@ export default {
   position: relative;
   padding-top: 50px;
 }
-
+.cancel {
+  margin-bottom: 20px;
+}
 .button-check {
-  height: 100px;
-  line-height: 32px;
-  width: 100%;
+  height: 30vh;
+  width: 30vh;
 }
 #qr-video {
   width: 400px;

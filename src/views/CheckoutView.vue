@@ -1,11 +1,14 @@
-<script setup>
+<script>
 import Checkout from "../components/Checkout.vue";
+export default {
+  components: {
+    Checkout
+  }
+};
 </script>
 
 <template>
-  <div class="header">
-    Checkout
-  </div>
+  <div class="header"></div>
   <checkout :userId="$route.query.userId" />
 </template>
 
