@@ -13,8 +13,8 @@
   --black-soft: #222222;
   --black-mute: #282828;
 
-  --color-text: var(--black);
-  --color-backgroud: var(--white);
+  --color-text: var(--white);
+  --color-background: var(--macherschaft-blue);
 }
 
 *,
@@ -28,14 +28,15 @@
 
 body {
   min-height: 100vh;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin: 0px;
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -63,18 +64,23 @@ body {
   padding: 10px;
   border: none;
   border-radius: 8px;
-  letter-spacing: .03em;
+  letter-spacing: 0.03em;
   box-sizing: border-box;
 }
 
 .button-primary {
-  background-color: var(--macherschaft-blue);
-  color: var(--macherschaft-yellow);
+  background-color: var(--macherschaft-yellow);
+  color: var(--white);
+  border-radius: 50%;
+  border: 5px white solid;
+  height: 200px;
+  width: 200px;
+  font-size: 24px;
 }
 
 .button-big {
   padding: 40px;
-  font-size: 32px;  
+  font-size: 32px;
 }
 
 .button-secondary {
@@ -83,6 +89,14 @@ body {
 }
 
 .button:disabled {
-  background-color:grey;
+  background-color: grey;
   color: white;
+}
+.button-small {
+  margin: 20px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
 }

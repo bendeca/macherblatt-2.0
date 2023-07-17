@@ -46,8 +46,6 @@ export default {
     },
     entryExists(data) {
       if (this.isCheckin) {
-        // TODO:
-        // already checked in today, what to do?
         this.showActions = false;
         this.showCheckinTwice = true;
 
@@ -55,6 +53,7 @@ export default {
       } else if (this.isCheckout) {
         // set checkout time to now
         console.log("set checkout time to now");
+        this.$router.push({ path: "checkout", query: { userId: data._id } });
       }
     },
     entryDoesNotExist(data, result) {
@@ -120,7 +119,7 @@ export default {
         });
     },
     reload() {
-      this.$router.go();
+      this.$router.go("home");
     }
   }
 };
@@ -137,10 +136,10 @@ export default {
         class="result-message"
         v-if="showCheckinSuccess || showCheckinTwice || showOnlyCheckout"
       >
-        <div v-if="showCheckinSuccess">Checkin erfolgreich, viel Spass</div>
+        <div v-if="showCheckinSuccess">Check-In erfolgreich, viel Spass</div>
         <div v-if="showCheckinTwice">Bereits eingecheckt</div>
         <div v-if="showOnlyCheckout">noch nicht eingecheckt</div>
-        <button @click="reload" class="button button-primary button-ok">
+        <button @click="reload" class="button button-primary button-small">
           Ok
         </button>
       </div>
@@ -149,22 +148,20 @@ export default {
       <div>
         <button
           @click="checkin"
-          class="button button-primary button-check"
+          class="button button-primary"
           :disabled="disableButtons"
         >
           Check-In
         </button>
-        ich bin gerade gekommen
       </div>
       <div>
         <button
           @click="checkout"
-          class="button button-primary button-check"
+          class="button button-primary"
           :disabled="disableButtons"
         >
           Check-Out
         </button>
-        ich bin dann mal weg
       </div>
     </div>
   </div>
@@ -192,11 +189,6 @@ export default {
   padding-top: 50px;
 }
 
-.button-check {
-  height: 100px;
-  line-height: 32px;
-  width: 100%;
-}
 #qr-video {
   width: 400px;
   height: 225px;
@@ -217,10 +209,5 @@ export default {
 }
 .result-message {
   margin: 30px;
-}
-.button-ok {
-  margin: 20px;
-  width: 10%;
-  height: 40px;
 }
 </style>

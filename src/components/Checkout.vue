@@ -47,10 +47,11 @@ export default {
   },
   methods: {
     checkout() {
-      fetch("/visits/checkout", {
+      fetch("https://macherblatt2022-c78d.restdb.io/rest/macherblatt", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "x-apikey": "62115f2e34fd62156585883b"
         },
         body: JSON.stringify({
           webling_user_id: this.$route.query.userId,
@@ -108,7 +109,7 @@ export default {
       <div class="submit">
         <button
           @click="checkout"
-          class="button button-primary"
+          class="button button-primary button-small"
           :disabled="!shopSelected"
         >
           Weiter
@@ -121,6 +122,7 @@ export default {
 
 <style scoped>
 .shops-title {
+  font-size: 24px;
   text-align: center;
   margin-top: 40px;
   margin-bottom: 10px;
@@ -153,17 +155,12 @@ export default {
   position: relative;
   cursor: pointer;
   font-size: 22px;
-  border: black 1px solid;
-  padding: 9px;
+  padding: 10px;
   border-radius: 50%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.shop-panel-container.checked {
-  border: var(--macherschaft-blue) 10px solid;
-  padding: 0;
 }
 .shop-panel-container.checked img {
   opacity: 1;
